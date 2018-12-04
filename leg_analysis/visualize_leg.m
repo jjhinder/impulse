@@ -29,11 +29,11 @@ M = pivots(10, :);
 P_0 = pivots(11, :);
 
 crank = [[B(1); D(1); F(1)], [B(2); D(2); F(2)]];
-shin = [[G(1); H(1); L(1); C(1)], [G(2); H(2); L(2); C(2)]];
+shin = [[H(1); G(1); L(1); C(1)], [H(2); G(2); L(2); C(2)]];
 foot = [[M(1); L(1); P_0(1)], [M(2); L(2); P_0(2)]];
 rod = [[A(1); K(1); C(1)], [A(2); K(2); C(2)]];
-crank_link_upper = [[F(1); G(1)], [F(2); G(2)]];
-crank_link_lower = [[D(1); H(1)], [D(2); H(2)]];
+crank_link_upper = [[F(1); H(1)], [F(2); H(2)]];
+crank_link_lower = [[D(1); G(1)], [D(2); G(2)]];
 achilles_link = [[K(1); M(1)], [K(2); M(2)]];
 
 
