@@ -63,6 +63,7 @@ hold on
 % plot pivots
 scatter(pivots(:, 1), pivots(:, 2), 80, 'k', 'LineWidth', 3)
 
+
 title('Leg Kinematics')
 xlabel('x[m]')
 ylabel('y[m]')
