@@ -36,7 +36,7 @@ P_0 = [0.00014, -0.07271];
 pivots = [A; B; C; D; F; G; H; K; L; M; P_0];
 
 % Visualization
-visualize_leg(pivots)
+% visualize_leg(pivots)
 
 
 % Link lengths
@@ -55,7 +55,7 @@ l_3 = norm(G-D);
 
 % Angles
 alpha_1 = acos(dot((D-B), (F-B)) / (norm(D-B) * norm(F-B)));
-beta_1 = acos(dot((C-A), (L-C)) / (norm(C-A) * norm(L-C)));
+beta_1 = acos(dot((C-H), (L-C)) / (norm(C-H) * norm(L-C)));
 beta_2 = acos(dot((C-H), (L-G)) / (norm(C-H) * norm(L-G)));
 gamma_1 = acos(dot((K-A), (C-A)) / (norm(K-A) * norm(C-A)));
 epsilon_0 = atan(A(2) / A(1));
@@ -74,24 +74,20 @@ l = A-K;
 t_6_0 = atan2(l(2), l(1));
 l = G-D;
 t_7_0 = atan2(l(2), l(1));
-%t_2_0 = atan((H-F)(2) / (H-F)(1));
 
 % Solve analytically
 syms t_2 t_3 t_4 t_5 t_6 t_7
 eqns = [
-    a_1 * cos(t_1) + l_1 * cos(t_2) + b_2 * cos(t_3) + c_2 * cos(t_6 - gamma_1) + l_0 * cos(epsilon_0) == 0,
-    a_1 * sin(t_1) + l_2 * sin(t_2) + b_1 * sin(t_3) + d_1 * sin(t_4) + l_3 * sin(t_5) + c_1 * sin(t_6) + l_0 * sin(epsilon_0) == 0,
-    a_2 * cos(t_1 - alpha_1) + l_3 * cos(t_7) + b_2 * cos(t_3 + beta_1) + c_2 * cos(t_6 + gamma_1) + l_0 * cos(epsilon_0) == 0,
-    a_2 * sin(t_1 - alpha_1) + l_3 * sin(t_7) + b_2 * sin(t_3 + beta_1) + c_2 * sin(t_6 + gamma_1) + l_0 * sin(epsilon_0) == 0,
-    a_2 * cos(t_1 - alpha_1) + l_3 * cos(t_7) + b_2 * cos(t_3 + beta_1) + b_3 * cos(t_3 + beta_1 - beta_2) + d_1 * cos(t_4) + l_2 * cos(t_5) + c_1 * cos(t_6) + l_0 * cos(epsilon_0) == 0,
-    a_2 * sin(t_1 - alpha_1) + l_3 * sin(t_7) + b_2 * sin(t_3 + beta_1) + b_3 * sin(t_3 + beta_1 - beta_2) + d_1 * sin(t_4) + l_2 * sin(t_5) + c_1 * sin(t_6) + l_0 * sin(epsilon_0) == 0
+    a_1 * cos(t_1) + l_1 * cos(t_2) + b_2 * cos(t_3) + c_2 * cos(t_6 - gamma_1) + l_0 * cos(epsilon_0),
+    a_1 * sin(t_1) + l_1 * sin(t_2) + b_2 * sin(t_3) + c_2 * sin(t_6 - gamma_1) + l_0 * sin(epsilon_0),
+    a_1 * cos(t_1) + l_1 * cos(t_2) + b_2 * cos(t_3) + b_3 * cos(t_3 - beta_1) + d_1 * cos(t_4) + l_2 * cos(t_5) + c_1 * cos(t_6) + l_0 * cos(epsilon_0),
+    a_1 * sin(t_1) + l_1 * sin(t_2) + b_2 * sin(t_3) + b_3 * sin(t_3 - beta_1) + d_1 * sin(t_4) + l_2 * sin(t_5) + c_1 * sin(t_6) + l_0 * sin(epsilon_0),
+    a_2 * cos(t_1 + alpha_1) + l_3 * cos(t_7) + b_1 * cos(t_3 - beta_2) + d_1 * cos(t_4) + l_2 * cos(t_5) + c_1 * cos(t_6) + l_0 * cos(epsilon_0),
+    a_2 * sin(t_1 + alpha_1) + l_3 * sin(t_7) + b_1 * sin(t_3 - beta_2) + d_1 * sin(t_4) + l_2 * sin(t_5) + c_1 * sin(t_6) + l_0 * sin(epsilon_0),
     ];
 
 vars = [t_2 t_3 t_4 t_5 t_6 t_7];
-%solutions = solve(eqns, vars);
-
-
-x = a_1 * cos(t_1) + l_2 * cos(t_2) + b_1 * cos(t_3) + d_1 * cos(t_4) + l_3 * cos(t_5) + c_1 * cos(t_6) + l_0 * cos(epsilon_0)
+solutions = solve(eqns, vars);
 
 
 
